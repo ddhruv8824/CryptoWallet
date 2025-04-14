@@ -3,44 +3,46 @@ import MetallicPaint, {
   parseLogoImage,
 } from "../blocks/Backgrounds/MetallicPaint";
 import logo from "../assets/images/ethereum-svgrepo-com.svg";
+import Swap from "./Swap";
 
 const Body = () => {
   const [imageData, setImageData] = useState(null);
 
+  const createFileObject = () => {
+    fetch(logo)
+      .then((response) => response.blob())
+      .then((blob) => {
+        const newFile = new File([blob], "react.svg", {
+          type: "image/svg+xml",
+          lastModified: Date.now(),
+        });
+
+        parseLogoImage(newFile)
+          .then((parsedData) => {
+            setImageData(parsedData.imageData);
+          })
+          .catch((error) => {
+            console.error("Error parsing image:", error);
+          });
+      })
+      .catch((error) => {
+        console.error("Error fetching the logo:", error);
+      });
+  };
+
   useEffect(() => {
-    async function loadDefaultImage() {
-      try {
-        const response = await fetch(logo);
-        const blob = await response.blob();
-        const file = new File([blob], "default.png", { type: blob.type });
-
-        const parsedData = await parseLogoImage(file);
-        setImageData(parsedData?.imageData ?? null);
-      } catch (err) {
-        console.error("Error loading default image:", err);
-      }
-    }
-
-    loadDefaultImage();
+    createFileObject();
   }, []);
-
   return (
-    <div className="flex border border-white w-full h-[400px]">
-      <div className="border border-white w-1/2 h-full">
-        <MetallicPaint
-          imageData={imageData ?? new ImageData(1, 1)}
-          params={{
-            edge: 2,
-            patternBlur: 0.005,
-            patternScale: 2,
-            refraction: 0.015,
-            speed: 0.3,
-            liquid: 0.07,
-          }}
-        />
+    <div className="flex border  w-full h-[600px]">
+      <div className="border w-1/2 h-full">
+        <div style={{ width: "100%", height: "80vh" }}>
+          {imageData && <MetallicPaint imageData={imageData} />}
+        </div>
       </div>
-
-      <div className="border border-black w-1/2 h-full"></div>
+      <div className="border border-white w-1/2 h-full flex items-center justify-center">
+        <Swap />
+      </div>
     </div>
   );
 };
