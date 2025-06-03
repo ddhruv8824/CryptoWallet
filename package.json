@@ -14,8 +14,9 @@
     "@react-three/fiber": "^9.1.2",
     "@react-three/postprocessing": "^3.0.4",
     "@solana/web3.js": "^1.98.0",
-    "@tailwindcss/vite": "^4.1.3",
     "bip39": "^3.1.0",
+    "bs58": "^6.0.0",
+    "clsx": "^2.1.1",
     "crypto-js": "^4.2.0",
     "ed25519-hd-key": "^1.3.0",
     "ethers": "^6.13.5",
@@ -26,11 +27,14 @@
     "postprocessing": "^6.37.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "sonner": "^2.0.3",
+    "tailwind-merge": "^3.2.0",
     "three": "^0.175.0",
     "tweetnacl": "^1.0.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
+    "@tailwindcss/vite": "^4.1.4",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^4.3.4",
@@ -40,8 +44,13 @@
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^15.15.0",
     "postcss": "^8.5.3",
-    "tailwindcss": "^4.1.3",
-    "vite": "^6.2.0",
+    "tailwindcss": "^4.1.4",
+    "vite": "^6.2.6",
     "vite-plugin-environment": "^1.1.3"
-  }
+  },
+  "description": "<<<<<<< HEAD\r # React + Vite",
+  "main": "eslint.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
