@@ -25,7 +25,7 @@ import {
   Trash,
 } from "lucide-react";
 
-import {Input} from "./ui/input";
+import { Input } from "./ui/Input";
 
 const Body = forwardRef((props, ref) => {
   const [pathTypes, setPathTypes] = useState("");
